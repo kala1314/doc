@@ -4,7 +4,7 @@
 
 #### windows: [ 点击下载安装](<https://www.python.org/downloads/windows/>)
 
-#### linux: 
+#### linux:
 
 * Arch系列: 自带python3
 * CentOS系列：[点击查看](<https://blog.csdn.net/Will_Pass/article/details/91948607>)
@@ -325,7 +325,7 @@
 
 * 常见的加(\+) 减(-) 乘(*)  除(/)
 * %  返回除法的余数
-* ** 幂运算   x**2  <=> $x^2​$
+* ** 幂运算   x**2  <=> $x^2$
 * // 整除（向下整除） 
 
 #### 比较运算符
@@ -401,7 +401,7 @@
 
 * 字符串的运算：
 
-  * ```python
+   ```python
     # 1.字符串 + 字符串
     "Hello" + "world"  = "Hello world"
     
@@ -410,11 +410,11 @@
     
     # in/not in
     判断某个字符在不在字符串里面
-    ```
+   ```
 
 * 切片
 
-  * ```python
+   ```python
     s = "Hello Python"
     # 获取第一个字母H
     s[0]   
@@ -433,11 +433,11 @@
     # 取Hello
     s[:5]
     --> 切片遵守左闭右开， s[:2] 是不包括第三个字符的
-    ```
+   ```
 
 * 字符串的格式化
 
-  * ```python
+   ```python
     # python2 用的是c语言的格式化方法，虽然python3也可以用，但是python3 更建议使用 format()函数来进行格式化
     
     # 字符串的格式化通常使用的场景就是将变量用在字符串里面，比如：
@@ -446,7 +446,7 @@
     print("大家好，我是{}，今年{}岁了。".format(name, age)) 
     --> 输出结果为： 大家好，我是考拉，今年20岁了。
     --> format()的使用方法就是在字符串里面用{}占位，字符串的引号后面紧跟.format(),按照占位符的顺序，一次将信息填入format的()里面
-    ```
+   ```
 
 * 字符串常见的内置函数
 
@@ -465,46 +465,46 @@
 
 * 创建一个列表
 
-  * ```python
+   ```python
     first_list = [1, 2, "Python"]
-    ```
+   ```
 
 * 获取列表的值
 
-  * ```python
+   ```python
     list1 = ['MacOS', 'Linux', 'Windows']
     # 获取linux:
     list1[1]
     -->列表的索引也是从0开始的， list1对应的值就是linux
      # 获取前两个
       list1[:2]
-    ```
+   ```
 
 * 更改列表的值
 
-  * ```python
+   ```python
     list1 = ['MacOS', 'Linux', 'Windows']
     # 将第一个更改为Apple
     list1[0] = "Apple"
-    ```
+   ```
 
 * 删除列表中的值
 
-  * ```python
+   ```python
     list1 = ['MacOS', 'Linux', 'Windows']
     # 删除windows
     del list1[2]
-    ```
+   ```
 
 * 增加元素
 
-  * ```python
+   ```python
     list1 = ['MacOS', 'Linux']
     # 添加一个字符串： "我是新添加的"
     list1.append("我是新添加的")
-    ```
+   ```
 
-    
+   
     —>列表的增删查改都是可以与切片一起用的
 
 * 方法函数
@@ -522,9 +522,9 @@
 
 * 创建一个元组
 
-  * ```python
+   ```python
     first_tup = (1, 2, "Google")
-    ```
+   ```
 
 
 
@@ -536,17 +536,17 @@
 
 * 创建字典
 
-  * ```python
+   ```python
     first_dict ={
       'apple':'MacOS/IOS',
       'google':"android",
       'mirosoft':'windows'
     }
-    ```
+   ```
 
 * 获取字典的值
 
-  * ```python
+   ```python
     first_dict ={
       'apple':'MacOS/IOS',
       'google':"android",
@@ -555,10 +555,10 @@
     
     # 获取google的值
     first_dict['google']
-    ```
+   ```
 
 * 修改字典的值
-    * ```python
+     ```python
       first_dict ={
         'apple':'MacOS/IOS',
         'google':"android",
@@ -567,11 +567,11 @@
       
       # 修改apple的值为 MacOS
       first_dict['apple'] = 'MacOS'
-      ```
+     ```
 
 * 删除字典
 
-    * ```python
+     ```python
         # 删除某个键
         first_dict['apple']
         
@@ -580,7 +580,7 @@
         
         # 删除字典
         del first_dict
-        ```
+     ```
 
 * 字典的注意事项
 
@@ -603,29 +603,29 @@
 
 * 创建集合可以用{} 或者 set(),如果是空集合则必须用 set()
 
-  * ```python
+   ```python
     first_set = set(1, 2, 3)
-    ```
+   ```
 
 * 添加元素
 
-  * ```python
+   ```python
     first_set = set(1， 2， 3)
     # 添加一个10
     first_set.add(10)
     --> 或者用update
     first_set.update(10)
-    ```
+   ```
 
 * 删除元素
 
-  * ```python
+   ```python
     first_set.remove(1)
     # discard()也可以移除元素，且如果没有该院送水不会报错
     first_set.discard(100)
     
     # clear() 清空所有元素
-    ```
+   ```
 
     
 
@@ -696,5 +696,400 @@
   
 
 * 
+
+
+
+
+
+### 函数def
+
+* 函数的简单定义：
+
+   ```python
+    '''
+    函数定义用 def 关键字
+    基本语法：
+    def 函数名(参数):
+    	函数体
+    '''
+    def name():
+      print('我是一个函数')
+      
+   ```
+
+* 函数的调用
+
+   ```python
+       def plus(x, y):
+         return x + y
+       
+       plus(1, 2)
+       # 直接写上函数名就能调用了
+   ```
+
+   
+
+* 匿名函数 
+
+  * 不实用def 这样标准的形式来定义函数，而是用lambda表达式
+
+  * 匿名函数格式： lambda 参数: 执行体
+
+  * 示例：
+
+     ```python
+      # 两个数想加的函数
+      def add(x, y):
+        return x + y
+      add(1, 2)
+      # 匿名函数的形式
+      print((lambda x, y: x + y)(1, 2))
+     ```
+
+    * ![001](pic/001.png)
+  * 示例：
+
+* 作用域
+
+  * 什么是作用域： 作用域就是变量的可以使用的范围
+  * 划分
+    * 局部作用域(L)
+    * 闭包函数外到函数 (E)
+    * 全局作用域 (G)
+    * 内建作用域(B)
+  * 变量的查找规则：
+    * L -> E -> G -> B,首先在自身作用域查找，找不到就一次向上作用域查找
+  * 
+
+
+
+
+
+### 闭包
+
+* 在函数体中定义内部函数，并使用外部函数的变量，然后吧内部函数返回，那么这个内部函数就叫闭包
+
+
+
+### 装饰器
+
+* 什么是装饰器：装饰器就是一个闭包，把一个函数作为参数然后返回一个函数
+
+* 在不修改原函数的情况下新增函数功能，够好的方式就是实用装饰器
+
+   ```python
+    # 在原函数 func()新增一行语句
+    def func():
+        print('我是原函数')
+        
+    # 装饰器仙新增
+    def func1(func):
+        def inner():
+            print('我是新增的语句')
+            func()
+        return inner()
+    
+    func = func1(func)
+   ```
+
+* 复杂一点的
+
+   ```python
+    
+    # 复杂一点的装饰器
+    
+    def info(name, age):
+        print('{} 今年{} 岁'.format(name, age))
+    
+    
+    # 这个函数有一个很明显的问题，年龄不可能为负数，但是这个函数并没有对年龄进行判断
+    
+    # 装饰器新增判断年龄
+    
+    def wrapper(info):
+    
+        def inner(name, age):
+            if age < 0:
+                age = 0
+            return info(name, age)
+        return inner
+    
+    info = wrapper(info)
+   ```
+
+* @ 装饰器
+
+  ```python
+   # 可以使用@ 将函数进行装饰
+   # 实用方法： 在函数定义前，@原函数
+  ```
+
+  * ![002](pic/002.png)
+
+* 通用的装饰器模板
+
+   ```python
+     def wrapper(func):
+     
+         def inner(*args, **kwargs):
+     
+             # 这里新增功能
+     
+             res = func(*args, **kwargs)
+             return res
+         return inner
+     
+     @wrapper
+     def func(name):
+         print('func这个函数可以传任何参数')
+   ```
+
+   
+
+* 带参数的装饰器
+
+   ```python
+    # 重复执行函数
+    def wrapper(count):
+    
+        def func1(func):
+    
+            def inner(*args, **kwargs):
+                for i in range(count):
+                    func(*args, **kwargs)
+            return inner
+        return func1
+    
+    @wrapper(5)
+    def func():
+        print('这个函数执行的次数是@后面的参数决定的')
+    
+    # 调用函数
+    func()
+   ```
+
+  * 
+
+
+
+
+
+### 迭代器生成器
+
+* 可迭代对象
+
+  * 可以直接作用与for循环的对象，统称( Iterable )
+  * 可以直接作用域for 循环的数据类型：
+    * 1、集合数据类型，如： list  tuple dict set String
+    * 2、generator, 包含生成器和带yield的geberator function
+    * 可以书踹死isinstance() 函数判断一个对象是否是 iterable 对象
+  * 
+
+* 生成器·
+
+  * 列表生成式 ： 用来生成list的生成器
+
+    ```python
+    # 格式： 
+    #变量名 = [生成变量 for  变量  变化范围 if 限制条件]
+    # 生成 1 2 4 9 16 25 36 
+    list1 = [x * x for x in range(1,7)]
+        
+    # 生成偶数列表
+    list2 = [ x for x in range(11) if x %2 == 0]
+        
+    list3 = [m + n for m in "abc" for n in "123"]
+    ```
+
+
+
+
+
+
+
+### 模块
+
+#### 什么是模块: 
+
+* 为了方便事先把一些常见的功能、方法卸载一个文件里面，然后直接导入使用，就不用自己再去手动实现一遍
+
+#### 模块的分类
+
+* python内置模块
+  * sys os time math ...
+* 第三方模块
+  * numpy pandas matplotlib ...
+  
+
+#### 模块安装
+
+* pip
+
+  ```shell
+  # cmd 窗口 
+  pip install 模块名 
+  ```
+
+  * [pip 不是内部和外部命令,点击查看](<https://blog.csdn.net/xueli1991/article/details/51914914>)
+
+* pycharm
+
+  ```shell
+  import 模块名， ALT+ENTER 会提示 install  
+  ```
+
+
+
+#### 导入模块
+
+* import     
+
+  ```python
+  import sys
+  ```
+
+  
+
+* from  模块名 import 方法
+
+  ```python
+  from serialnum import webdriver
+  ```
+
+
+
+#### File模块
+* 打开文件open
+
+  ```python
+  # 基本格式
+  open(file,mode='r')
+  
+  # 简单示例
+  a = open('a.txt', mode='r')
+  
+  '''
+  mode 有 读 模式 r 
+  写 w
+  追加 w+
+  读二进制 rb
+  写二进制 wb
+  '''
+  ```
+
+  
+
+* file对象
+
+  ```python
+  
+  file.readline()  # 读取一行
+  file.readlines() # 全部读取
+  file.write()
+  ```
+
+  
+
+* 通用的文件写模板
+
+  ```python
+  # 读文件
+  with open(文件, mode='模式') as f:
+      f.write(内容)
+  	f.close()
+  ```
+
+  
+
+#### OS 模块
+
+* OS：　os，语义为操作系统，所以肯定就是操作系统相关的功能了，可以处理文件和目录这些我们日常手动需要做的操作，就比如说：显示当前目录下所有文件/删除某个文件/获取文件大小……另外，os模块不受平台限制。
+
+* 常用的方法：
+
+  ```python
+  # 获取系统名称
+  os.name()  # nt 表示windows posix表linux
+  
+  # 返回指定目录下的所有文件和目录名
+  os.listdir(指定路径)
+  
+  # 删除文件 
+  os.remove(文件名)
+  
+  # 创建文件
+  os.makedirs()
+  
+  # 更名
+  os.rename()
+  
+  # 运行shell
+  os.system() 
+  
+  # 判断是不是一个文件 
+  os.path.isfile(名称)
+  
+  # 判断是不是一个目录
+  os.path.isdir(路径)
+  
+  # 如果路径 path 存在，返回 True；如果路径 path 不存在，返回 False
+  os.path.exists(path)
+  
+  ...
+  ```
+
+  ==方法比较多，用到什么就百度把==
+
+* windows  清理垃圾文件Demo
+
+  ```python
+  import os
+  
+  '''
+  需要清理的文件路径： D:\Test
+  需要清理的文件： *.xlsx
+  '''
+  
+  # windows 的路径需要 \\  或者 /
+  
+  locPath = 'D:\\Test'
+  # locPath = 'D:/Test'
+  
+  # print(os.listdir(locPath))
+  files = os.listdir(locPath)
+  
+  for f in files:
+      if f.endswith(".xlsx"):
+          # 组合文件绝对路径
+          filename = os.path.join(locPath, f)
+          os.remove(filename)
+  ```
+
+  
+
+
+
+#### time 模块
+
+* 时间的表示方式： 时间戳 、 时间元组、时间格式化
+
+* 时间戳
+
+  * 时间戳是指格林尼治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数
+
+  * 获取当前的时间戳
+
+    ```python
+    import time
+    time.time()
+    ```
+
+* 时间元组
+
+  * 时间元组：首先是一个元组类型，然后里面有9个元素，分别如下：
+  * 
+
+* 
+
 
 
