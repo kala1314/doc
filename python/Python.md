@@ -1206,7 +1206,7 @@
     
     ```
 
-  * 这个起始有一个很明显的问题 （收件人是多个呢）
+  * 这个其实有一个很明显的问题 （收件人是多个呢）
 
     ```python
     import smtplib
@@ -1236,7 +1236,68 @@
     
     ```
     
-    
+  
+* 发送带有附件的邮件
+
+  ```python
+  '''
+  基本思路就是，使用MIMEMultipart来标示这个邮件是多个部分组成的，然后attach各个部分。如果是附件，则add_header加入附件的声明。
+  在python中，MIME的这些对象的继承关系如下。
+  MIMEBase
+      |-- MIMENonMultipart
+          |-- MIMEApplication
+          |-- MIMEAudio
+          |-- MIMEImage
+          |-- MIMEMessage
+          |-- MIMEText
+      |-- MIMEMultipart
+  一般来说，不会用到MIMEBase，而是直接使用它的继承类。MIMEMultipart有attach方法，而MIMENonMultipart没有，只能被attach。
+  MIME有很多种类型，这个略麻烦，如果附件是图片格式，我要用MIMEImage，如果是音频，要用MIMEAudio，如果是word、excel，我都不知道该用哪种MIME类型了，得上google去查。
+  最懒的方法就是，不管什么类型的附件，都用MIMEApplication，MIMEApplication默认子类型是application/octet-stream。
+  application/octet-stream表明“这是个二进制的文件，希望你们那边知道怎么处理”，然后客户端，比如qq邮箱，收到这个声明后，会根据文件扩展名来猜测。
+  '''
+  
+  
+  import smtplib
+  from email.mime.application import MIMEApplication
+  from email.mime.multipart import MIMEMultipart
+  from email.mime.text import MIMEText
+  
+  sender = "kala_1314@163.com"
+  passwd = "kala0129"
+  recipient = "3286276407@qq.com"
+  
+  # 发送的信息
+  #message = MIMEText("我是一条邮件发送的信息", "plain", "utf-8")
+  # 构造邮件对象
+  msg = MIMEMultipart()
+  
+  # 构建信息
+  msg["From"] = sender
+  msg["To"] = recipient
+  msg["Subject"] = "邮件发送测试"
+  
+  
+  # 构造附件
+  # part1 文字部分
+  part1 = MIMEText("我是邮件的文字")
+  # 构造进邮件
+  msg.attach(part1)
+  
+  # part2 附件部分
+  part2 = MIMEApplication(open("/home/kala/Phone.xlsx", mode='rb').read())
+  part2.add_header('Content-Disposition', 'attachment', filename="Phone.xlsx")
+  msg.attach(part2)
+  
+  # 邮件服务器信息
+  maill_Server = smtplib.SMTP("smtp.163.com", "25")
+  maill_Server.login(sender, passwd)
+  
+  maill_Server.sendmail(sender, recipient, msg.as_string())
+  maill_Server.quit()
+  ```
+
+  
 
 * 
 
