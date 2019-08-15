@@ -1206,6 +1206,36 @@
     
     ```
 
+  * 这个起始有一个很明显的问题 （收件人是多个呢）
+
+    ```python
+    import smtplib
+    from email.mime.text import MIMEText
+    # 发件人收件人信息
+    sender = "kala_1314@163.com"
+    passwd = "这里是邮箱授权码，不是登录密码"
+    #recipient = "xxx@xx.com"
+    recipient = "xxx@xx.com, xxx@xxx.com"
+    
+    # 发送的信息
+    message = MIMEText("我是一条邮件发送的信息", "plain", "utf-8")
+    
+    # 构建信息
+    message["From"] = sender
+    # message['To'] = recipient
+    message["To"] = ",".join(recipient)
+    message["Subject"] = "邮件发送测试"
+    
+    # 邮件服务器信息
+    maill_Server = smtplib.SMTP("smtp.163.com", "25")
+    maill_Server.login(sender, passwd)
+    
+    #maill_Server.sendmail(sender, recipient, message.as_string())
+    maill_Server.sendmail(sender, str(recipient).split(","), message.as_string())
+    maill_Server.quit()
+    
+    ```
+    
     
 
 * 
