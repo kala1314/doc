@@ -1,6 +1,6 @@
 ## Python
 
-### 安装 
+### 安装
 
 #### windows: [ 点击下载安装](<https://www.python.org/downloads/windows/>)
 
@@ -461,7 +461,7 @@
 
 #### 列表List
 
-* python中列表的出场率是非常高考的，十分灵活，什么数据类型都可以存
+* python中列表的出场率是非常考的，十分灵活，什么数据类型都可以存
 
 * 创建一个列表
 
@@ -675,7 +675,7 @@
   1x2=2    2x2=4    
   1x3=3    2x3=6    3x3=9    
   1x4=4    2x4=8    3x4=12    4x4=16    
-  1x5=5    2x5=10    3x5=15    4x5=20    5x5=25    
+  1x5=5    2x5=10   3x5=15    4x5=20    5x5=25    
   ...
   ```
   <!--for i in range(1, 10):
@@ -882,7 +882,7 @@
   * 可以直接作用域for 循环的数据类型：
     * 1、集合数据类型，如： list  tuple dict set String
     * 2、generator, 包含生成器和带yield的geberator function
-    * 可以书踹死isinstance() 函数判断一个对象是否是 iterable 对象
+    * 可以使用isinstance() 函数判断一个对象是否是 iterable 对象
   * 
 
 * 生成器·
@@ -938,7 +938,7 @@
   import 模块名， ALT+ENTER 会提示 install  
   ```
 
-
+* [点击查看 离线安装](https://blog.csdn.net/weixin_39986952/article/details/82255126)
 
 #### 导入模块
 
@@ -1087,9 +1087,101 @@
 * 时间元组
 
   * 时间元组：首先是一个元组类型，然后里面有9个元素，分别如下：
+
+    | tm_year  | 2019    |
+    | -------- | ------- |
+    | tm_mon   | 1 - 12  |
+    | tm_mday  | 1 - 31  |
+    | tm_hour  | 0 - 23  |
+    | tm_min   | 0 - 59  |
+    | tm_sec   | 0 - 61  |
+    | tm_wday  | 0 - 6   |
+    | tm_wday  | 0 - 366 |
+    | tm_isdst | -1 0 1  |
+
+  * 简单示例
+
+    ```python
+    # 获取当前时间（时间元组）
+    print(time.localtime())
+    
+    # localtime() 需要接受一个时间戳参数，默认的参数是 当前的时间戳 
+    time.localtime()  <==> time.localtime(time.time())
+    
+    # localtime() 也是把 时间戳转化成时间元组
+    ```
+
+    
+
   * 
 
 * 
+
+#### re 正则模块
+
+* 场景： 输入一个字符串，判断是不是手机号
+
+  ```python
+  # 正常来说 ，首先你得判断是不是全是数字，长度是不是11位 是不是1开头的 13  18 17 15 什么的 
+  ```
+
+* 正则表达式不是python的东西，只是通过一个re 模块去使用正则
+
+* 主要有三个函数 match()  findall()  search() 
+
+* re.match() 
+
+  * 尝试从字符串的起始位置匹配一个pattern 模式，有点类似与是不是以xxx 开头
+
+  * 参数
+
+    * patrern  正则表达式
+    * string 字符
+    * flags: 标志位  用于控制匹配方式 比如 大小写 是否多行匹配
+      * re. I 对大小写不敏感
+      *  L 座本地化识别匹配
+      *  M  多行匹配  影响 ^ $ 这两个元字符号
+      * S 使.匹配  包括换行符
+      *  U  根据 unicode 字符解析  会影响 \w \W  \b \B 
+      *  X 更灵活的格式便于理解
+
+  * 示例
+
+    ```python
+    import re 
+    print(rem.match("www", "www.baidu.com"))
+    print(re.match("www", "WWW.baidu.com", flags=re.I))
+    ```
+
+    
+
+* search() 
+
+  * 参数和match差不多 ，找出字符串中匹配到的第一个
+
+* findall() 
+
+  * 找出字符串中的所有符合条件的，以列表形式存储
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
