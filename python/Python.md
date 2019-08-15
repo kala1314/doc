@@ -1169,6 +1169,47 @@
 
 
 
+###  SMTP 邮件
+
+* SMTP（Simple Mail Transfer Protocol）是简单传输协议，它是一组用于用于由源地址到目的地址的邮件传输规则。python中对SMTP进行了简单的封装，可以发送纯文本邮件、HTML邮件以及带附件的邮件。
+
+* 模块介绍：
+
+  * email 模块： 负责构建邮件
+
+  * smtplib ： 负责发送邮件
+
+  * 示例
+
+    ```python
+    import smtplib
+    from email.mime.text import MIMEText
+    # 发件人收件人信息
+    sender = "kala_1314@163.com"
+    passwd = "kala0129"
+    recipient = "3286276407@qq.com"
+    
+    # 发送的信息
+    message = MIMEText("我是一条邮件发送的信息", "plain", "utf-8")
+    
+    # 构建信息
+    message["From"] = sender
+    message["To"] = recipient
+    message["SUbject"] = "邮件发送测试"
+    
+    # 邮件服务器信息
+    maill_Server = smtplib.SMTP("smtp.163.com", "25")
+    maill_Server.login(sender, passwd)
+    
+    maill_Server.sendmail(sender, recipient, message.as_string())
+    maill_Server.quit()
+    
+    ```
+
+    
+
+* 
+
 
 
 
