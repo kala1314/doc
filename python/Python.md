@@ -410,10 +410,9 @@
     # 2. 字符串 * 数字
     "Hello" * 2 = "HelloHello"
     
-    # in/not in
-    判断某个字符在不在字符串里面
+   
    ```
-
+   
 * 切片
 
    ```python
@@ -488,6 +487,9 @@
     list1 = ['MacOS', 'Linux', 'Windows']
     # 将第一个更改为Apple
     list1[0] = "Apple"
+       
+    # 插入一个
+   list1.insert(1,"Unix")
    ```
 
 * 删除列表中的值
@@ -496,6 +498,12 @@
     list1 = ['MacOS', 'Linux', 'Windows']
     # 删除windows
     del list1[2]
+    
+   # 删除windows
+   list1.remove('Windows')
+   
+   # 清空list1
+   list1.clear()
    ```
 
 * 增加元素
@@ -749,19 +757,49 @@
      ```
 
     * ![001](pic/001.png)
+    
   * 示例：
+
+* 高阶函数：
+
+   * filter() :**filter()** 函数用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象，如果要转换为列表，可以使用 **list()** 来转换。
+
+   * 示例：
+
+      ```python
+      def is_odd(n):
+          return n % 2 == 1
+       
+      tmplist = filter(is_odd, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+      newlist = list(tmplist)
+      print(newlist)
+      ```
 
 * 作用域
 
   * 什么是作用域： 作用域就是变量的可以使用的范围
+  
+  * 什么能影响变量的作用域： def  class lamdba。if/else  for  while 这些并不能改变变量的作用域，
+  
+    也就是说啊，这些代码块里面的变量在外部也是可以访问的。
+  
   * 划分
     * 局部作用域(L)
     * 闭包函数外到函数 (E)
     * 全局作用域 (G)
     * 内建作用域(B)
+    
   * 变量的查找规则：
+    
     * L -> E -> G -> B,首先在自身作用域查找，找不到就一次向上作用域查找
-  * 
+    
+  * 全局变量：
+  
+  * 局部变量：
+  
+  * 局部变量转全局变量 global
+  
+  * 里层转外层非全局： nonlocal
 
 
 
@@ -960,7 +998,8 @@
 
 
 
-#### File模块
+#### 文件IO
+
 * 打开文件open
 
   ```python
@@ -1073,6 +1112,8 @@
 
 #### time 模块
 
+* UTC: 时间标准时    DST： 夏令时
+
 * 时间的表示方式： 时间戳 、 时间元组、时间格式化
 
 * 时间戳
@@ -1103,19 +1144,31 @@
 
   * 简单示例
 
-    ```python
+    ``` python
     # 获取当前时间（时间元组）
     print(time.localtime())
     
     # localtime() 需要接受一个时间戳参数，默认的参数是 当前的时间戳 
+    # 将时间戳转化为本地时间的时间元组
     time.localtime()  <==> time.localtime(time.time())
     
-    # localtime() 也是把 时间戳转化成时间元组
+    # gmtime() 将时间戳转化未世界标准时的时间元组
+    time.gmtime()
+    
+    # mktime() 将时间元组转化未时间戳，需要一个时间元组参数
+    time.mktime(time.localtime())
     ```
 
     
 
-  * 
+  * 格式化时间
+
+    ```python
+    print(time.strftime("%Y-%m-%d %X", time.localtime()))
+    print(time.strptime("2019-02-01", "%Y-%m-%d"))
+    ```
+
+  * [推荐time模块文章](https://blog.csdn.net/you_are_my_dream/article/details/61616465)
 
 * 
 
@@ -1167,7 +1220,14 @@
 
 
 
+* 元字符
 
+  |      |                                |
+  | ---- | ------------------------------ |
+  | .    | 匹配一个除换行符之外的任意字符 |
+  | \^ | 匹配字符串开头 |
+  | $ | 匹配字符串结尾 |
+  
 
 
 
